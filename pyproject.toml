@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "threadwise"
+version = "1.1.0"
+description = "Measure whether your Python should be serial, threaded, multi-process, or async — before you rewrite anything."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Seyyed Sajjad Fazeli" }]
+keywords = ["gil", "benchmark", "concurrency", "asyncio", "multiprocessing", "performance"]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Software Development :: Testing",
+  "Topic :: System :: Benchmark",
+  "Typing :: Typed",
+]
+dependencies = []
+
+[project.optional-dependencies]
+numpy = ["numpy>=1.24"]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+threadwise = "threadwise.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/seyyed-sajjad-fazeli/threadwise"
+Issues = "https://github.com/seyyed-sajjad-fazeli/threadwise/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+threadwise = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
